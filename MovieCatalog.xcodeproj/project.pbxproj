@@ -29,6 +29,7 @@
 		B9FC95492B8A820C00F16CEF /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FC95482B8A820C00F16CEF /* MovieDetailViewController.swift */; };
 		B9FC954B2B8A841300F16CEF /* MovieDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FC954A2B8A841300F16CEF /* MovieDetailViewModel.swift */; };
 		B9FC954D2B8A8AE700F16CEF /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FC954C2B8A8AE700F16CEF /* HomeCoordinator.swift */; };
+		B9FC954F2B8A919700F16CEF /* EmptySectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FC954E2B8A919700F16CEF /* EmptySectionTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +75,7 @@
 		B9FC95482B8A820C00F16CEF /* MovieDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
 		B9FC954A2B8A841300F16CEF /* MovieDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewModel.swift; sourceTree = "<group>"; };
 		B9FC954C2B8A8AE700F16CEF /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
+		B9FC954E2B8A919700F16CEF /* EmptySectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptySectionTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +165,7 @@
 				B9FC954C2B8A8AE700F16CEF /* HomeCoordinator.swift */,
 				B9FC95302B8A48AC00F16CEF /* HomeViewController.swift */,
 				B9FC95322B8A4B3D00F16CEF /* MoviePosterSectionTableViewCell.swift */,
+				B9FC954E2B8A919700F16CEF /* EmptySectionTableViewCell.swift */,
 				B9FC95342B8A563600F16CEF /* PosterCollectionViewCell.swift */,
 				B9FC95402B8A766800F16CEF /* MoviePosterSectionViewData.swift */,
 				B9FC95422B8A798100F16CEF /* MoviePosterViewData.swift */,
@@ -335,6 +338,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B9FC95042B8A44ED00F16CEF /* ViewController.swift in Sources */,
+				B9FC954F2B8A919700F16CEF /* EmptySectionTableViewCell.swift in Sources */,
 				B9FC95382B8A5DF000F16CEF /* ApiRequester.swift in Sources */,
 				B9FC954D2B8A8AE700F16CEF /* HomeCoordinator.swift in Sources */,
 				B9FC95002B8A44ED00F16CEF /* AppDelegate.swift in Sources */,

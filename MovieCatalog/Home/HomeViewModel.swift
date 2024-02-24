@@ -13,6 +13,7 @@ protocol HomeViewModelProtocol {
     var numberOfSections: Int { get }
     var numberOfRows: Int { get }
     func loadMovies()
+    func tryAgainLoading(section: Int)
     func sectionTitle(for section: Int) -> String
     func selectPosterAt(section: Int, row: Int)
 }
@@ -44,6 +45,16 @@ extension HomeViewModel: HomeViewModelProtocol {
             self?.stateSubject.send(.movies(movieSections.map(MoviePosterSectionViewData.init)))
         }
     }
+    
+    func tryAgainLoading(section: Int) {
+        stateSubject.send(.loading(true))
+        service.fetchMovies(section: section + 1) { [weak self] moviesSection in
+            guard let self else { return }
+            self.stateSubject.send(.loading(false))
+            self.movieSections[section] = moviesSection
+            self.stateSubject.send(.updateSection(section, self.movieSections.map(MoviePosterSectionViewData.init)))
+        }
+    }
 
     func sectionTitle(for section: Int) -> String {
         "Movie List \(section)"
@@ -62,6 +73,7 @@ extension HomeViewModel {
     enum State {
         case loading(Bool)
         case movies([MoviePosterSectionViewData])
+        case updateSection(Int, [MoviePosterSectionViewData])
         case lowQualityContent
     }
 }

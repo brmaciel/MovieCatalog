@@ -53,17 +53,6 @@ class HomeViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "close", style: .cancel))
         present(alert, animated: true)
     }
-    
-    func showErrorAlert() { // TODO: remove
-        let alert = UIAlertController(title: "Error",
-                                      message: "Sorry, something wrong happened. We couldn't get the content. Try again later",
-                                      preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "try again", style: .default) { [weak self] _ in
-            self?.viewModel.loadMovies()
-        })
-        present(alert, animated: true)
-    }
-
 }
 
 extension HomeViewController {
@@ -75,6 +64,8 @@ extension HomeViewController {
                     self?.showLoading(isLoading)
                 case .movies(let movieSections):
                     self?.showMovies(movieSections)
+                case .updateSection(let section, let movieSections):
+                    self?.reloadMovies(movieSections, inSection: section)
                 case .lowQualityContent:
                     self?.showLowQualityAlert()
                 }
@@ -91,6 +82,11 @@ extension HomeViewController {
         movieSectionsViewData = viewData
         tableView.reloadData()
     }
+    
+    func reloadMovies(_ viewData: [MoviePosterSectionViewData], inSection section: Int) {
+        movieSectionsViewData = viewData
+        tableView.reloadSections(IndexSet(integer: section), with: .fade)
+    }
 }
 
 // MARK: Setup View
@@ -103,6 +99,7 @@ extension HomeViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(MoviePosterSectionTableViewCell.self, forCellReuseIdentifier: MoviePosterSectionTableViewCell.identifier)
+        tableView.register(EmptySectionTableViewCell.self, forCellReuseIdentifier: EmptySectionTableViewCell.identifier)
     }
     
     func buildViewHierarchy() {
@@ -133,13 +130,24 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: MoviePosterSectionTableViewCell.identifier, for: indexPath) as? MoviePosterSectionTableViewCell,
-              let movieSectionsViewData else {
-            return UITableViewCell()
+        guard let movieSectionsViewData else { return UITableViewCell() }
+        let sectionViewData = movieSectionsViewData[indexPath.section]
+        
+        if sectionViewData.numPosters == 0 {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: EmptySectionTableViewCell.identifier, for: indexPath) as? EmptySectionTableViewCell else {
+                return UITableViewCell()
+            }
+            cell.setup(section: indexPath.section, tryAgainAction: { [weak self] section in
+                self?.viewModel.tryAgainLoading(section: section)
+            })
+            return cell
+        } else if let cell = tableView.dequeueReusableCell(withIdentifier: MoviePosterSectionTableViewCell.identifier, for: indexPath) as? MoviePosterSectionTableViewCell {
+            cell.delegate = self
+            cell.setup(viewData: sectionViewData, section: indexPath.section)
+            return cell
         }
-        cell.delegate = self
-        cell.setup(viewData: movieSectionsViewData[indexPath.section], section: indexPath.section)
-        return cell
+        
+        return UITableViewCell()
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

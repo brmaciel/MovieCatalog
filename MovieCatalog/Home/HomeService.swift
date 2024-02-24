@@ -9,6 +9,7 @@ import Foundation
 
 protocol HomeServiceProtocol {
     func fetchMovies(completion: @escaping ([[Movie]]) -> Void)
+    func fetchMovies(section: Int, completion: @escaping ([Movie]) -> Void)
 }
 
 class HomeService: HomeServiceProtocol {
@@ -35,6 +36,22 @@ class HomeService: HomeServiceProtocol {
                 if completedSection == numberOfSections {
                     completion(movieSections)
                 }
+            }
+        }
+    }
+
+    func fetchMovies(section: Int, completion: @escaping ([Movie]) -> Void) {
+        ApiRequester.shared.request(page: section) { result in
+            switch result {
+            case .success(let data):
+                do {
+                    let model = try JSONDecoder().decode(MovieResponse.self, from: data)
+                    completion(model.movies)
+                } catch {
+                    completion([])
+                }
+            case .failure:
+                completion([])
             }
         }
     }
