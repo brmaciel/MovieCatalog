@@ -11,8 +11,9 @@ class HomeViewController: UIViewController {
     
     // MARK: UI Components
     let tableView: UITableView = {
-        let tableView = UITableView()
+        let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.showsVerticalScrollIndicator = false
         return tableView
     }()
 
@@ -67,9 +68,15 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let label = UILabel()
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 16))
+        let label = UILabel(frame: CGRect(x: 8, y: 0, width: tableView.frame.width, height: 16))
         label.text = "Section Header \(section)"
-        
-        return label
+        label.font = .systemFont(ofSize: 17, weight: .bold)
+        view.addSubview(label)
+        return view
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 16
     }
 }
