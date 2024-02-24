@@ -59,6 +59,10 @@ extension HomeViewController {
                 case .movies(let viewData):
                     self?.movieSectionViewData = viewData
                     self?.tableView.reloadData()
+                case .contentDetails:
+                    print("TODO: present content details")
+                case .lowQualityContent:
+                    self?.showLowQualityAlert()
                 }
             }
             .store(in: &cancellable)
@@ -129,12 +133,6 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension HomeViewController: MoviePosterTableViewCellDelegate {
     func didSelectPosterAt(section: Int, row: Int) {
-        print("poster selected: section \(section) row: \(row)")
-        let isHighQuality = Int.random(in: 0...1) == 1
-        if isHighQuality {
-            // TODO: present details
-        } else {
-            showLowQualityAlert()
-        }
+        viewModel.selectPosterAt(section: section, row: row)
     }
 }

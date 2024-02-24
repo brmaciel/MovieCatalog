@@ -13,6 +13,7 @@ protocol HomeViewModelProtocol {
     var numberOfSections: Int { get }
     var numberOfRows: Int { get }
     func loadMovies()
+    func selectPosterAt(section: Int, row: Int)
 }
 
 class HomeViewModel {
@@ -42,11 +43,21 @@ extension HomeViewModel: HomeViewModelProtocol {
             self?.stateSubject.send(.loading(false))
         }
     }
+
+    func selectPosterAt(section: Int, row: Int) {
+        if movies[row].voteAverage >= 6 {
+            stateSubject.send(.contentDetails)
+        } else {
+            stateSubject.send(.lowQualityContent)
+        }
+    }
 }
 
 extension HomeViewModel {
     enum State {
         case loading(Bool)
         case movies(MoviePosterSectionViewData)
+        case lowQualityContent
+        case contentDetails
     }
 }
