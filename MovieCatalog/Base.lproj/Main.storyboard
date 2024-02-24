@@ -17,20 +17,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Bg-Yn-g6n">
-                                <rect key="frame" x="159" y="408.66666666666669" width="75" height="35"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6JT-my-bZE">
+                                <rect key="frame" x="98.333333333333329" y="408.66666666666669" width="196.33333333333343" height="35"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Login"/>
                                 <connections>
-                                    <action selector="tapButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yFN-Oc-cTO"/>
+                                    <action selector="tapButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="82V-QH-9al"/>
                                 </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="8Bg-Yn-g6n" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="LKt-2D-fzB"/>
-                            <constraint firstItem="8Bg-Yn-g6n" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="SQb-In-UVR"/>
+                            <constraint firstItem="6JT-my-bZE" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="1iH-BR-N2P"/>
+                            <constraint firstItem="6JT-my-bZE" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Av6-MJ-BQz"/>
+                            <constraint firstItem="6JT-my-bZE" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.5" id="lla-Rc-3RM"/>
                         </constraints>
                     </view>
                 </viewController>
