@@ -14,6 +14,11 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
+    @IBAction func tapButton(_ sender: UIButton) {
+        let homeVC = HomeViewController()
+        homeVC.modalPresentationStyle = .fullScreen
+        present(homeVC, animated: true)
+    }
 
 }
 

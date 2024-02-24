@@ -16,6 +16,7 @@
 		B9FC95172B8A44EE00F16CEF /* MovieCatalogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FC95162B8A44EE00F16CEF /* MovieCatalogTests.swift */; };
 		B9FC95212B8A44EE00F16CEF /* MovieCatalogUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FC95202B8A44EE00F16CEF /* MovieCatalogUITests.swift */; };
 		B9FC95232B8A44EE00F16CEF /* MovieCatalogUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FC95222B8A44EE00F16CEF /* MovieCatalogUITestsLaunchTests.swift */; };
+		B9FC95312B8A48AC00F16CEF /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FC95302B8A48AC00F16CEF /* HomeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		B9FC951C2B8A44EE00F16CEF /* MovieCatalogUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MovieCatalogUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9FC95202B8A44EE00F16CEF /* MovieCatalogUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCatalogUITests.swift; sourceTree = "<group>"; };
 		B9FC95222B8A44EE00F16CEF /* MovieCatalogUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCatalogUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		B9FC95302B8A48AC00F16CEF /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 				B9FC94FF2B8A44ED00F16CEF /* AppDelegate.swift */,
 				B9FC95012B8A44ED00F16CEF /* SceneDelegate.swift */,
 				B9FC95032B8A44ED00F16CEF /* ViewController.swift */,
+				B9FC952F2B8A489D00F16CEF /* Home */,
 				B9FC95052B8A44ED00F16CEF /* Main.storyboard */,
 				B9FC95082B8A44ED00F16CEF /* Assets.xcassets */,
 				B9FC950A2B8A44ED00F16CEF /* LaunchScreen.storyboard */,
@@ -125,6 +128,14 @@
 				B9FC95222B8A44EE00F16CEF /* MovieCatalogUITestsLaunchTests.swift */,
 			);
 			path = MovieCatalogUITests;
+			sourceTree = "<group>";
+		};
+		B9FC952F2B8A489D00F16CEF /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				B9FC95302B8A48AC00F16CEF /* HomeViewController.swift */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,6 +272,7 @@
 				B9FC95042B8A44ED00F16CEF /* ViewController.swift in Sources */,
 				B9FC95002B8A44ED00F16CEF /* AppDelegate.swift in Sources */,
 				B9FC95022B8A44ED00F16CEF /* SceneDelegate.swift in Sources */,
+				B9FC95312B8A48AC00F16CEF /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
