@@ -147,7 +147,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 16))
         let label = UILabel(frame: CGRect(x: 8, y: 0, width: tableView.frame.width, height: 16))
-        label.text = "Section Header \(section)"
+        label.text = viewModel.sectionTitle(for: section)
         label.font = .systemFont(ofSize: 17, weight: .bold)
         view.addSubview(label)
         return view

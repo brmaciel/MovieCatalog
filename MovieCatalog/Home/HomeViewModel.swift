@@ -13,6 +13,7 @@ protocol HomeViewModelProtocol {
     var numberOfSections: Int { get }
     var numberOfRows: Int { get }
     func loadMovies()
+    func sectionTitle(for section: Int) -> String
     func selectPosterAt(section: Int, row: Int)
 }
 
@@ -45,6 +46,10 @@ extension HomeViewModel: HomeViewModelProtocol {
             self?.stateSubject.send(.loading(false))
             self?.stateSubject.send(.error)
         }
+    }
+
+    func sectionTitle(for section: Int) -> String {
+        "Section Header \(section)"
     }
 
     func selectPosterAt(section: Int, row: Int) {
