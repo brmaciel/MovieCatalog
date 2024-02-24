@@ -20,7 +20,7 @@ protocol HomeViewModelProtocol {
 class HomeViewModel {
     var coordinator: HomeCoordinatorProtocol
     var service: HomeServiceProtocol
-    var movies: [Movie] = []
+    var movieSections: [[Movie]] = []
     private let stateSubject = PassthroughSubject<State, Never>()
     var statePublisher: AnyPublisher<State, Never> { stateSubject.eraseToAnyPublisher() }
     
@@ -33,28 +33,25 @@ class HomeViewModel {
 }
 
 extension HomeViewModel: HomeViewModelProtocol {
-    var numberOfSections: Int { 5 }
+    var numberOfSections: Int { movieSections.count }
     var numberOfRows: Int { 1 }
     
     func loadMovies() {
         stateSubject.send(.loading(true))
-        service.fetchMovies { [weak self] movies in
+        service.fetchMovies { [weak self] movieSections in
             self?.stateSubject.send(.loading(false))
-            self?.movies = movies
-            self?.stateSubject.send(.movies(MoviePosterSectionViewData(movies: movies)))
-        } failure: { [weak self] _ in
-            self?.stateSubject.send(.loading(false))
-            self?.stateSubject.send(.error)
+            self?.movieSections = movieSections
+            self?.stateSubject.send(.movies(movieSections.map(MoviePosterSectionViewData.init)))
         }
     }
 
     func sectionTitle(for section: Int) -> String {
-        "Section Header \(section)"
+        "Movie List \(section)"
     }
 
     func selectPosterAt(section: Int, row: Int) {
-        if movies[row].voteAverage >= 6 {
-            coordinator.presentDetails(of: movies[row])
+        if movieSections[section][row].voteAverage >= 6 {
+            coordinator.presentDetails(of: movieSections[section][row])
         } else {
             stateSubject.send(.lowQualityContent)
         }
@@ -64,8 +61,7 @@ extension HomeViewModel: HomeViewModelProtocol {
 extension HomeViewModel {
     enum State {
         case loading(Bool)
-        case movies(MoviePosterSectionViewData)
-        case error
+        case movies([MoviePosterSectionViewData])
         case lowQualityContent
     }
 }

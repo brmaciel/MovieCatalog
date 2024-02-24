@@ -26,7 +26,7 @@ class HomeViewController: UIViewController {
     }()
 
     var viewModel: HomeViewModelProtocol
-    var movieSectionViewData: MoviePosterSectionViewData?
+    var movieSectionsViewData: [MoviePosterSectionViewData]?
     var cancellable = Set<AnyCancellable>()
     
     init(viewModel: HomeViewModelProtocol) {
@@ -54,7 +54,7 @@ class HomeViewController: UIViewController {
         present(alert, animated: true)
     }
     
-    func showErrorAlert() {
+    func showErrorAlert() { // TODO: remove
         let alert = UIAlertController(title: "Error",
                                       message: "Sorry, something wrong happened. We couldn't get the content. Try again later",
                                       preferredStyle: .alert)
@@ -73,10 +73,8 @@ extension HomeViewController {
                 switch state {
                 case .loading(let isLoading):
                     self?.showLoading(isLoading)
-                case .movies(let movies):
-                    self?.showMovies(movies)
-                case .error:
-                    self?.showErrorAlert()
+                case .movies(let movieSections):
+                    self?.showMovies(movieSections)
                 case .lowQualityContent:
                     self?.showLowQualityAlert()
                 }
@@ -88,9 +86,9 @@ extension HomeViewController {
         isLoading ? loadingView.startAnimating() : loadingView.stopAnimating()
     }
     
-    func showMovies(_ viewData: MoviePosterSectionViewData) {
+    func showMovies(_ viewData: [MoviePosterSectionViewData]) {
         tableView.isHidden = false
-        movieSectionViewData = viewData
+        movieSectionsViewData = viewData
         tableView.reloadData()
     }
 }
@@ -136,11 +134,11 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: MoviePosterSectionTableViewCell.identifier, for: indexPath) as? MoviePosterSectionTableViewCell,
-              let movieSectionViewData else {
+              let movieSectionsViewData else {
             return UITableViewCell()
         }
         cell.delegate = self
-        cell.setup(viewData: movieSectionViewData, section: indexPath.section)
+        cell.setup(viewData: movieSectionsViewData[indexPath.section], section: indexPath.section)
         return cell
     }
 
