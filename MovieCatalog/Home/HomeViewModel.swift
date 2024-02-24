@@ -39,8 +39,8 @@ extension HomeViewModel: HomeViewModelProtocol {
             self?.movies = movies
             self?.stateSubject.send(.movies(MoviePosterSectionViewData(movies: movies)))
         } failure: { [weak self] _ in
-            print("error")
             self?.stateSubject.send(.loading(false))
+            self?.stateSubject.send(.error)
         }
     }
 
@@ -57,6 +57,7 @@ extension HomeViewModel {
     enum State {
         case loading(Bool)
         case movies(MoviePosterSectionViewData)
+        case error
         case lowQualityContent
         case contentDetails
     }

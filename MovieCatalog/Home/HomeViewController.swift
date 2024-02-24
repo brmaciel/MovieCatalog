@@ -53,6 +53,16 @@ class HomeViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "close", style: .cancel))
         present(alert, animated: true)
     }
+    
+    func showErrorAlert() {
+        let alert = UIAlertController(title: "Error",
+                                      message: "Sorry, something wrong happened. We couldn't get the content. Try again later",
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "try again", style: .default) { [weak self] _ in
+            self?.viewModel.loadMovies()
+        })
+        present(alert, animated: true)
+    }
 
 }
 
@@ -65,6 +75,8 @@ extension HomeViewController {
                     self?.showLoading(isLoading)
                 case .movies(let movies):
                     self?.showMovies(movies)
+                case .error:
+                    self?.showErrorAlert()
                 case .contentDetails:
                     print("TODO: present content details")
                 case .lowQualityContent:
