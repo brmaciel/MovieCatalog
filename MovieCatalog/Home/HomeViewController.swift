@@ -22,6 +22,12 @@ class HomeViewController: UIViewController {
 
         setupView()
     }
+    
+    func showLowQualityAlert() {
+        let alert = UIAlertController(title: "Low Quality Content", message: "Unfortunately, this content does not have the expected high quality and it's no longer available.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "close", style: .cancel))
+        present(alert, animated: true)
+    }
 
 }
 
@@ -85,5 +91,11 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
 extension HomeViewController: MoviePosterTableViewCellDelegate {
     func didSelectPosterAt(section: Int, row: Int) {
         print("poster selected: section \(section) row: \(row)")
+        let isHighQuality = Int.random(in: 0...1) == 1
+        if isHighQuality {
+            // TODO: present details
+        } else {
+            showLowQualityAlert()
+        }
     }
 }
