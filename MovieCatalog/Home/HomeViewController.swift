@@ -40,7 +40,9 @@ class HomeViewController: UIViewController {
     }
     
     func showLowQualityAlert() {
-        let alert = UIAlertController(title: "Low Quality Content", message: "Unfortunately, this content does not have the expected high quality and it's no longer available.", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Low Quality Content", 
+                                      message: "Unfortunately, this content does not have the expected high quality and it's no longer available.",
+                                      preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "close", style: .cancel))
         present(alert, animated: true)
     }
@@ -94,11 +96,11 @@ extension HomeViewController {
 
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 5
+        return viewModel.numberOfSections
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return viewModel.numberOfRows
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

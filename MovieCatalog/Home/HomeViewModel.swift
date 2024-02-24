@@ -10,6 +10,8 @@ import Foundation
 
 protocol HomeViewModelProtocol {
     var statePublisher: AnyPublisher<HomeViewModel.State, Never> { get }
+    var numberOfSections: Int { get }
+    var numberOfRows: Int { get }
     func loadMovies()
 }
 
@@ -26,6 +28,9 @@ class HomeViewModel {
 }
 
 extension HomeViewModel: HomeViewModelProtocol {
+    var numberOfSections: Int { 5 }
+    var numberOfRows: Int { 1 }
+    
     func loadMovies() {
         stateSubject.send(.loading(true))
         service.fetchMovies { [weak self] movies in
