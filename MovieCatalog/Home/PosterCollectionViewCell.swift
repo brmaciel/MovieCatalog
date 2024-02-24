@@ -29,8 +29,8 @@ class PosterCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func setup(isHighQuality: Bool) {
-        poster.layer.borderColor = isHighQuality ? UIColor.red.cgColor : UIColor.clear.cgColor
+    func setup(viewData: MoviePosterViewData) {
+        poster.layer.borderColor = viewData.isHightQuality ? UIColor.red.cgColor : UIColor.clear.cgColor
     }
 }
 

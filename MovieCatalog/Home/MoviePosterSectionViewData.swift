@@ -15,4 +15,8 @@ struct MoviePosterSectionViewData {
     init(movies: [Movie]) {
         self.movies = movies
     }
+    
+    func moviePoster(at index: Int) -> MoviePosterViewData {
+        MoviePosterViewData(movie: movies[index])
+    }
 }

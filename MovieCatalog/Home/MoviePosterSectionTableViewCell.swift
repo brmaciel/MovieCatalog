@@ -78,10 +78,12 @@ extension MoviePosterSectionTableViewCell: UICollectionViewDelegate, UICollectio
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PosterCollectionViewCell.identifier, for: indexPath) as? PosterCollectionViewCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PosterCollectionViewCell.identifier, for: indexPath) as? PosterCollectionViewCell,
+              let moviePoster = viewData?.moviePoster(at: indexPath.row) else {
             return UICollectionViewCell()
         }
-        cell.setup(isHighQuality: Int.random(in: 0...1) == 1)
+        
+        cell.setup(viewData: moviePoster)
         return cell
     }
     
