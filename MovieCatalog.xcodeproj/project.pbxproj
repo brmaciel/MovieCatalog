@@ -22,6 +22,7 @@
 		B9FC95382B8A5DF000F16CEF /* ApiRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FC95372B8A5DF000F16CEF /* ApiRequester.swift */; };
 		B9FC953A2B8A6D4900F16CEF /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FC95392B8A6D4900F16CEF /* HomeViewModel.swift */; };
 		B9FC953C2B8A6E1600F16CEF /* HomeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FC953B2B8A6E1600F16CEF /* HomeService.swift */; };
+		B9FC953F2B8A6F5E00F16CEF /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FC953E2B8A6F5E00F16CEF /* Movie.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		B9FC95372B8A5DF000F16CEF /* ApiRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiRequester.swift; sourceTree = "<group>"; };
 		B9FC95392B8A6D4900F16CEF /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		B9FC953B2B8A6E1600F16CEF /* HomeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeService.swift; sourceTree = "<group>"; };
+		B9FC953E2B8A6F5E00F16CEF /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +116,7 @@
 				B9FC94FF2B8A44ED00F16CEF /* AppDelegate.swift */,
 				B9FC95012B8A44ED00F16CEF /* SceneDelegate.swift */,
 				B9FC95032B8A44ED00F16CEF /* ViewController.swift */,
+				B9FC953D2B8A6F5300F16CEF /* Model */,
 				B9FC95362B8A5DE300F16CEF /* Service */,
 				B9FC952F2B8A489D00F16CEF /* Home */,
 				B9FC95052B8A44ED00F16CEF /* Main.storyboard */,
@@ -159,6 +162,14 @@
 				B9FC95372B8A5DF000F16CEF /* ApiRequester.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		B9FC953D2B8A6F5300F16CEF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B9FC953E2B8A6F5E00F16CEF /* Movie.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -296,6 +307,7 @@
 				B9FC95382B8A5DF000F16CEF /* ApiRequester.swift in Sources */,
 				B9FC95002B8A44ED00F16CEF /* AppDelegate.swift in Sources */,
 				B9FC953A2B8A6D4900F16CEF /* HomeViewModel.swift in Sources */,
+				B9FC953F2B8A6F5E00F16CEF /* Movie.swift in Sources */,
 				B9FC95022B8A44ED00F16CEF /* SceneDelegate.swift in Sources */,
 				B9FC95352B8A563600F16CEF /* PosterCollectionViewCell.swift in Sources */,
 				B9FC953C2B8A6E1600F16CEF /* HomeService.swift in Sources */,

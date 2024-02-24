@@ -22,8 +22,8 @@ class HomeViewModel {
 
 extension HomeViewModel: HomeViewModelProtocol {
     func loadMovies() {
-        service.fetchMovies { _ in
-            print("movies")
+        service.fetchMovies { movies in
+            print("movies: \(movies.count)")
         } failure: { _ in
             print("error")
         }
