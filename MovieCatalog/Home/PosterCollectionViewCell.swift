@@ -5,13 +5,14 @@
 //  Created by Bruno Maciel on 2/24/24.
 //
 
+import Kingfisher
 import UIKit
 
 class PosterCollectionViewCell: UICollectionViewCell {
     static let identifier = "PosterCollectionViewCell"
     
-    let poster: UIView = {
-        let view = UIView()
+    let posterImageView: UIImageView = {
+        let view = UIImageView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .gray
         view.layer.cornerRadius = 6
@@ -30,7 +31,8 @@ class PosterCollectionViewCell: UICollectionViewCell {
     }
 
     func setup(viewData: MoviePosterViewData) {
-        poster.layer.borderColor = viewData.isHightQuality ? UIColor.red.cgColor : UIColor.clear.cgColor
+        posterImageView.layer.borderColor = viewData.isHightQuality ? UIColor.red.cgColor : UIColor.clear.cgColor
+        posterImageView.kf.setImage(with: viewData.movieUrl)
     }
 }
 
@@ -41,15 +43,15 @@ extension PosterCollectionViewCell {
     }
     
     private func buildViewHierarchy() {
-        contentView.addSubview(poster)
+        contentView.addSubview(posterImageView)
     }
     
     private func setupConstraints() {
         NSLayoutConstraint.activate([
-            poster.topAnchor.constraint(equalTo: contentView.topAnchor),
-            poster.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            poster.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            poster.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+            posterImageView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            posterImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            posterImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            posterImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         ])
     }
 }
