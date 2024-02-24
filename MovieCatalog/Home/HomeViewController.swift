@@ -5,6 +5,7 @@
 //  Created by Bruno Maciel on 2/24/24.
 //
 
+import Combine
 import UIKit
 
 class HomeViewController: UIViewController {
@@ -18,6 +19,7 @@ class HomeViewController: UIViewController {
     }()
 
     var viewModel: HomeViewModelProtocol
+    var cancellable = Set<AnyCancellable>()
     
     init(viewModel: HomeViewModelProtocol) {
         self.viewModel = viewModel
@@ -32,6 +34,7 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
 
         setupView()
+        observeViewModelState()
         viewModel.loadMovies()
     }
     
@@ -41,6 +44,25 @@ class HomeViewController: UIViewController {
         present(alert, animated: true)
     }
 
+}
+
+extension HomeViewController {
+    func observeViewModelState() {
+        viewModel.statePublisher
+            .sink { [weak self] state in
+                switch state {
+                case .loading(let isLoading):
+                    self?.showLoading(isLoading)
+                case .movies:
+                    self?.tableView.reloadData()
+                }
+            }
+            .store(in: &cancellable)
+    }
+
+    func showLoading(_ isLoading: Bool) {
+        print("\(isLoading ? "start" : "stop") loading")
+    }
 }
 
 // MARK: Setup View
