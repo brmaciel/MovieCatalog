@@ -17,6 +17,7 @@
 		B9FC95212B8A44EE00F16CEF /* MovieCatalogUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FC95202B8A44EE00F16CEF /* MovieCatalogUITests.swift */; };
 		B9FC95232B8A44EE00F16CEF /* MovieCatalogUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FC95222B8A44EE00F16CEF /* MovieCatalogUITestsLaunchTests.swift */; };
 		B9FC95312B8A48AC00F16CEF /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FC95302B8A48AC00F16CEF /* HomeViewController.swift */; };
+		B9FC95332B8A4B3D00F16CEF /* MoviePosterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FC95322B8A4B3D00F16CEF /* MoviePosterTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		B9FC95202B8A44EE00F16CEF /* MovieCatalogUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCatalogUITests.swift; sourceTree = "<group>"; };
 		B9FC95222B8A44EE00F16CEF /* MovieCatalogUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCatalogUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		B9FC95302B8A48AC00F16CEF /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		B9FC95322B8A4B3D00F16CEF /* MoviePosterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviePosterTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				B9FC95302B8A48AC00F16CEF /* HomeViewController.swift */,
+				B9FC95322B8A4B3D00F16CEF /* MoviePosterTableViewCell.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -273,6 +276,7 @@
 				B9FC95002B8A44ED00F16CEF /* AppDelegate.swift in Sources */,
 				B9FC95022B8A44ED00F16CEF /* SceneDelegate.swift in Sources */,
 				B9FC95312B8A48AC00F16CEF /* HomeViewController.swift in Sources */,
+				B9FC95332B8A4B3D00F16CEF /* MoviePosterTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
