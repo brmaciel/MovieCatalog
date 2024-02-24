@@ -10,11 +10,15 @@ import UIKit
 class MoviePosterTableViewCell: UITableViewCell {
     static let identifier = "MoviePosterTableViewCell"
     
-    let posters: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .yellow
-        return view
+    let collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.itemSize = .init(width: 100, height: 160)
+        layout.scrollDirection = .horizontal
+        
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.backgroundColor = .yellow
+        return collectionView
     }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -33,19 +37,35 @@ extension MoviePosterTableViewCell {
     private func setupView() {
         buildViewHierarchy()
         setupConstraints()
+        
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
     }
     
     private func buildViewHierarchy() {
-        contentView.addSubview(posters)
+        contentView.addSubview(collectionView)
     }
     
     private func setupConstraints() {
         NSLayoutConstraint.activate([
-            posters.topAnchor.constraint(equalTo: contentView.topAnchor),
-            posters.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            posters.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            posters.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            posters.heightAnchor.constraint(equalToConstant: 160)
+            collectionView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            collectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            collectionView.heightAnchor.constraint(equalToConstant: 160)
         ])
+    }
+}
+
+extension MoviePosterTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 6
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
+        cell.contentView.backgroundColor = .red
+        return cell
     }
 }
