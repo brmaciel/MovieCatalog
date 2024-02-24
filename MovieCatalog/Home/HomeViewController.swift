@@ -63,7 +63,8 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: MoviePosterTableViewCell.identifier, for: indexPath) as? MoviePosterTableViewCell else {
             return UITableViewCell()
         }
-        
+        cell.delegate = self
+        cell.setup(section: indexPath.section)
         return cell
     }
 
@@ -78,5 +79,11 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 16
+    }
+}
+
+extension HomeViewController: MoviePosterTableViewCellDelegate {
+    func didSelectPosterAt(section: Int, row: Int) {
+        print("poster selected: section \(section) row: \(row)")
     }
 }

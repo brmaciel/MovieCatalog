@@ -7,8 +7,15 @@
 
 import UIKit
 
+protocol MoviePosterTableViewCellDelegate: AnyObject {
+    func didSelectPosterAt(section: Int, row: Int)
+}
+
 class MoviePosterTableViewCell: UITableViewCell {
     static let identifier = "MoviePosterTableViewCell"
+    
+    weak var delegate: MoviePosterTableViewCellDelegate?
+    private var section: Int = 0
     
     let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -33,6 +40,9 @@ class MoviePosterTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
+    func setup(section: Int) {
+        self.section = section
+    }
 }
 
 extension MoviePosterTableViewCell {
@@ -71,5 +81,9 @@ extension MoviePosterTableViewCell: UICollectionViewDelegate, UICollectionViewDa
         }
         cell.setup(isHighQuality: Int.random(in: 0...1) == 1)
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        delegate?.didSelectPosterAt(section: section, row: indexPath.row)
     }
 }
