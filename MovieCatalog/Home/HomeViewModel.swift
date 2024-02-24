@@ -31,7 +31,7 @@ extension HomeViewModel: HomeViewModelProtocol {
         service.fetchMovies { [weak self] movies in
             self?.stateSubject.send(.loading(false))
             self?.movies = movies
-            self?.stateSubject.send(.movies)
+            self?.stateSubject.send(.movies(MoviePosterSectionViewData(movies: movies)))
         } failure: { [weak self] _ in
             print("error")
             self?.stateSubject.send(.loading(false))
@@ -42,6 +42,6 @@ extension HomeViewModel: HomeViewModelProtocol {
 extension HomeViewModel {
     enum State {
         case loading(Bool)
-        case movies
+        case movies(MoviePosterSectionViewData)
     }
 }

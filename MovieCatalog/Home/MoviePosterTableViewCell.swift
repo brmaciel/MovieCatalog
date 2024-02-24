@@ -15,6 +15,7 @@ class MoviePosterTableViewCell: UITableViewCell {
     static let identifier = "MoviePosterTableViewCell"
     
     weak var delegate: MoviePosterTableViewCellDelegate?
+    var viewData: MoviePosterSectionViewData?
     private var section: Int = 0
     
     let collectionView: UICollectionView = {
@@ -40,7 +41,8 @@ class MoviePosterTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func setup(section: Int) {
+    func setup(viewData: MoviePosterSectionViewData, section: Int) {
+        self.viewData = viewData
         self.section = section
     }
 }
@@ -72,7 +74,7 @@ extension MoviePosterTableViewCell {
 
 extension MoviePosterTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 6
+        return viewData?.numPosters ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

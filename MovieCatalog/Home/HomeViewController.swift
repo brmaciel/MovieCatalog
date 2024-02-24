@@ -19,6 +19,7 @@ class HomeViewController: UIViewController {
     }()
 
     var viewModel: HomeViewModelProtocol
+    var movieSectionViewData: MoviePosterSectionViewData?
     var cancellable = Set<AnyCancellable>()
     
     init(viewModel: HomeViewModelProtocol) {
@@ -53,7 +54,8 @@ extension HomeViewController {
                 switch state {
                 case .loading(let isLoading):
                     self?.showLoading(isLoading)
-                case .movies:
+                case .movies(let viewData):
+                    self?.movieSectionViewData = viewData
                     self?.tableView.reloadData()
                 }
             }
@@ -100,11 +102,12 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: MoviePosterTableViewCell.identifier, for: indexPath) as? MoviePosterTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: MoviePosterTableViewCell.identifier, for: indexPath) as? MoviePosterTableViewCell,
+              let movieSectionViewData else {
             return UITableViewCell()
         }
         cell.delegate = self
-        cell.setup(section: indexPath.section)
+        cell.setup(viewData: movieSectionViewData, section: indexPath.section)
         return cell
     }
 
