@@ -46,7 +46,7 @@ extension HomeViewModel: HomeViewModelProtocol {
 
     func selectPosterAt(section: Int, row: Int) {
         if movies[row].voteAverage >= 6 {
-            stateSubject.send(.contentDetails)
+            stateSubject.send(.contentDetails(movies[row]))
         } else {
             stateSubject.send(.lowQualityContent)
         }
@@ -59,6 +59,6 @@ extension HomeViewModel {
         case movies(MoviePosterSectionViewData)
         case error
         case lowQualityContent
-        case contentDetails
+        case contentDetails(Movie)
     }
 }
