@@ -14,10 +14,12 @@ class MoviePosterTableViewCell: UITableViewCell {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = .init(width: 100, height: 160)
         layout.scrollDirection = .horizontal
+        layout.minimumLineSpacing = 8
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.backgroundColor = .yellow
+        collectionView.showsHorizontalScrollIndicator = false
         return collectionView
     }()
     
@@ -40,7 +42,7 @@ extension MoviePosterTableViewCell {
         
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        collectionView.register(PosterCollectionViewCell.self, forCellWithReuseIdentifier: PosterCollectionViewCell.identifier)
     }
     
     private func buildViewHierarchy() {
@@ -64,8 +66,10 @@ extension MoviePosterTableViewCell: UICollectionViewDelegate, UICollectionViewDa
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
-        cell.contentView.backgroundColor = .red
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PosterCollectionViewCell.identifier, for: indexPath) as? PosterCollectionViewCell else {
+            return UICollectionViewCell()
+        }
+        cell.setup(isHighQuality: Int.random(in: 0...1) == 1)
         return cell
     }
 }

@@ -18,6 +18,7 @@
 		B9FC95232B8A44EE00F16CEF /* MovieCatalogUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FC95222B8A44EE00F16CEF /* MovieCatalogUITestsLaunchTests.swift */; };
 		B9FC95312B8A48AC00F16CEF /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FC95302B8A48AC00F16CEF /* HomeViewController.swift */; };
 		B9FC95332B8A4B3D00F16CEF /* MoviePosterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FC95322B8A4B3D00F16CEF /* MoviePosterTableViewCell.swift */; };
+		B9FC95352B8A563600F16CEF /* PosterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FC95342B8A563600F16CEF /* PosterCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		B9FC95222B8A44EE00F16CEF /* MovieCatalogUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCatalogUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		B9FC95302B8A48AC00F16CEF /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		B9FC95322B8A4B3D00F16CEF /* MoviePosterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviePosterTableViewCell.swift; sourceTree = "<group>"; };
+		B9FC95342B8A563600F16CEF /* PosterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +139,7 @@
 			children = (
 				B9FC95302B8A48AC00F16CEF /* HomeViewController.swift */,
 				B9FC95322B8A4B3D00F16CEF /* MoviePosterTableViewCell.swift */,
+				B9FC95342B8A563600F16CEF /* PosterCollectionViewCell.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -275,6 +278,7 @@
 				B9FC95042B8A44ED00F16CEF /* ViewController.swift in Sources */,
 				B9FC95002B8A44ED00F16CEF /* AppDelegate.swift in Sources */,
 				B9FC95022B8A44ED00F16CEF /* SceneDelegate.swift in Sources */,
+				B9FC95352B8A563600F16CEF /* PosterCollectionViewCell.swift in Sources */,
 				B9FC95312B8A48AC00F16CEF /* HomeViewController.swift in Sources */,
 				B9FC95332B8A4B3D00F16CEF /* MoviePosterTableViewCell.swift in Sources */,
 			);
