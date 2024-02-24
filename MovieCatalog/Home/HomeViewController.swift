@@ -11,6 +11,13 @@ import UIKit
 class HomeViewController: UIViewController {
     
     // MARK: UI Components
+    let loadingView: UIActivityIndicatorView = {
+        let loadingView = UIActivityIndicatorView()
+        loadingView.translatesAutoresizingMaskIntoConstraints = false
+        loadingView.transform = CGAffineTransformMakeScale(3, 3)
+        return loadingView
+    }()
+    
     let tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -56,9 +63,8 @@ extension HomeViewController {
                 switch state {
                 case .loading(let isLoading):
                     self?.showLoading(isLoading)
-                case .movies(let viewData):
-                    self?.movieSectionViewData = viewData
-                    self?.tableView.reloadData()
+                case .movies(let movies):
+                    self?.showMovies(movies)
                 case .contentDetails:
                     print("TODO: present content details")
                 case .lowQualityContent:
@@ -69,7 +75,13 @@ extension HomeViewController {
     }
 
     func showLoading(_ isLoading: Bool) {
-        print("\(isLoading ? "start" : "stop") loading")
+        isLoading ? loadingView.startAnimating() : loadingView.stopAnimating()
+    }
+    
+    func showMovies(_ viewData: MoviePosterSectionViewData) {
+        tableView.isHidden = false
+        movieSectionViewData = viewData
+        tableView.reloadData()
     }
 }
 
@@ -79,17 +91,22 @@ extension HomeViewController {
         buildViewHierarchy()
         setupConstraints()
         
+        tableView.isHidden = true
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(MoviePosterSectionTableViewCell.self, forCellReuseIdentifier: MoviePosterSectionTableViewCell.identifier)
     }
     
     func buildViewHierarchy() {
+        view.addSubview(loadingView)
         view.addSubview(tableView)
     }
     
     func setupConstraints() {
         NSLayoutConstraint.activate([
+            loadingView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            loadingView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            
             tableView.topAnchor.constraint(equalTo: view.topAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
