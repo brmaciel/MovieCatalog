@@ -17,6 +17,7 @@ class PosterCollectionViewCell: UICollectionViewCell {
         view.backgroundColor = .gray
         view.layer.cornerRadius = 6
         view.layer.borderWidth = 1
+        view.clipsToBounds = true
         return view
     }()
     
