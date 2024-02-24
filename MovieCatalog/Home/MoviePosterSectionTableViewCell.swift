@@ -1,5 +1,5 @@
 //
-//  MoviePosterTableViewCell.swift
+//  MoviePosterSectionTableViewCell.swift
 //  MovieCatalog
 //
 //  Created by Bruno Maciel on 2/24/24.
@@ -11,8 +11,8 @@ protocol MoviePosterTableViewCellDelegate: AnyObject {
     func didSelectPosterAt(section: Int, row: Int)
 }
 
-class MoviePosterTableViewCell: UITableViewCell {
-    static let identifier = "MoviePosterTableViewCell"
+class MoviePosterSectionTableViewCell: UITableViewCell {
+    static let identifier = "MoviePosterSectionTableViewCell"
     
     weak var delegate: MoviePosterTableViewCellDelegate?
     var viewData: MoviePosterSectionViewData?
@@ -47,7 +47,7 @@ class MoviePosterTableViewCell: UITableViewCell {
     }
 }
 
-extension MoviePosterTableViewCell {
+extension MoviePosterSectionTableViewCell {
     private func setupView() {
         buildViewHierarchy()
         setupConstraints()
@@ -72,7 +72,7 @@ extension MoviePosterTableViewCell {
     }
 }
 
-extension MoviePosterTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
+extension MoviePosterSectionTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewData?.numPosters ?? 0
     }
