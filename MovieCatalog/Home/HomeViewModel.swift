@@ -17,12 +17,15 @@ protocol HomeViewModelProtocol {
 }
 
 class HomeViewModel {
+    var coordinator: HomeCoordinatorProtocol
     var service: HomeServiceProtocol
     var movies: [Movie] = []
     private let stateSubject = PassthroughSubject<State, Never>()
     var statePublisher: AnyPublisher<State, Never> { stateSubject.eraseToAnyPublisher() }
     
-    init(service: HomeServiceProtocol) {
+    init(coordinator: HomeCoordinatorProtocol,
+         service: HomeServiceProtocol) {
+        self.coordinator = coordinator
         self.service = service
     }
     
@@ -46,7 +49,7 @@ extension HomeViewModel: HomeViewModelProtocol {
 
     func selectPosterAt(section: Int, row: Int) {
         if movies[row].voteAverage >= 6 {
-            stateSubject.send(.contentDetails(movies[row]))
+            coordinator.presentDetails(of: movies[row])
         } else {
             stateSubject.send(.lowQualityContent)
         }
@@ -59,6 +62,5 @@ extension HomeViewModel {
         case movies(MoviePosterSectionViewData)
         case error
         case lowQualityContent
-        case contentDetails(Movie)
     }
 }

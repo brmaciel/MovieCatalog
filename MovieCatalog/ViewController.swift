@@ -15,9 +15,8 @@ class ViewController: UIViewController {
     }
 
     @IBAction func tapButton(_ sender: UIButton) {
-        let homeVC = HomeViewController(viewModel: HomeViewModel(service: HomeService()))
-        homeVC.modalPresentationStyle = .fullScreen
-        present(homeVC, animated: true)
+        let homeCoordinator = HomeCoordinator()
+        homeCoordinator.start(from: self)
     }
 
 }

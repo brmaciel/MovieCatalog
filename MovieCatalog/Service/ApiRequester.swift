@@ -15,9 +15,6 @@ class ApiRequester {
     
     var urlSession: URLSession = URLSession.shared
     
-    
-    // MARK: - Metodos de Acesso a API
-    
     func request(page: Int,
                  completion: @escaping (Result<Data, Error>) -> Void) {
         let headers = [

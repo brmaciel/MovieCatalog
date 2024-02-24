@@ -77,11 +77,6 @@ extension HomeViewController {
                     self?.showMovies(movies)
                 case .error:
                     self?.showErrorAlert()
-                case .contentDetails(let movie):
-                    let vc = MovieDetailViewController(viewModel: MovieDetailViewModel(movie: movie))
-                    vc.modalPresentationStyle = .popover
-                    vc.modalTransitionStyle = .crossDissolve
-                    self?.present(vc, animated: true)
                 case .lowQualityContent:
                     self?.showLowQualityAlert()
                 }
