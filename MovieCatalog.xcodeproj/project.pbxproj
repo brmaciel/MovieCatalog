@@ -30,6 +30,8 @@
 		B9FC954B2B8A841300F16CEF /* MovieDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FC954A2B8A841300F16CEF /* MovieDetailViewModel.swift */; };
 		B9FC954D2B8A8AE700F16CEF /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FC954C2B8A8AE700F16CEF /* HomeCoordinator.swift */; };
 		B9FC954F2B8A919700F16CEF /* EmptySectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FC954E2B8A919700F16CEF /* EmptySectionTableViewCell.swift */; };
+		B9FC95512B8BD4BF00F16CEF /* HomeMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FC95502B8BD4BF00F16CEF /* HomeMocks.swift */; };
+		B9FC95532B8BD4E800F16CEF /* EventRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FC95522B8BD4E800F16CEF /* EventRecorder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +78,8 @@
 		B9FC954A2B8A841300F16CEF /* MovieDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewModel.swift; sourceTree = "<group>"; };
 		B9FC954C2B8A8AE700F16CEF /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
 		B9FC954E2B8A919700F16CEF /* EmptySectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptySectionTableViewCell.swift; sourceTree = "<group>"; };
+		B9FC95502B8BD4BF00F16CEF /* HomeMocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMocks.swift; sourceTree = "<group>"; };
+		B9FC95522B8BD4E800F16CEF /* EventRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRecorder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +150,8 @@
 			isa = PBXGroup;
 			children = (
 				B9FC95162B8A44EE00F16CEF /* MovieCatalogTests.swift */,
+				B9FC95502B8BD4BF00F16CEF /* HomeMocks.swift */,
+				B9FC95522B8BD4E800F16CEF /* EventRecorder.swift */,
 			);
 			path = MovieCatalogTests;
 			sourceTree = "<group>";
@@ -360,6 +366,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B9FC95512B8BD4BF00F16CEF /* HomeMocks.swift in Sources */,
+				B9FC95532B8BD4E800F16CEF /* EventRecorder.swift in Sources */,
 				B9FC95172B8A44EE00F16CEF /* MovieCatalogTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

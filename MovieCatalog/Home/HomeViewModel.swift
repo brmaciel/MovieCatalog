@@ -70,10 +70,25 @@ extension HomeViewModel: HomeViewModelProtocol {
 }
 
 extension HomeViewModel {
-    enum State {
+    enum State: Equatable {
         case loading(Bool)
         case movies([MoviePosterSectionViewData])
         case updateSection(Int, [MoviePosterSectionViewData])
         case lowQualityContent
+        
+        static func == (lhs: HomeViewModel.State, rhs: HomeViewModel.State) -> Bool {
+            switch (lhs, rhs) {
+            case (.loading(let boolLhs), .loading(let boolRhs)):
+                return boolLhs == boolRhs
+            case (.movies, .movies):
+                return true
+            case (.updateSection(let sectionLhs, _), .updateSection(let sectionRhs, _)):
+                return sectionLhs == sectionRhs
+            case (.lowQualityContent, .lowQualityContent):
+                return true
+            default:
+                return false
+            }
+        }
     }
 }
